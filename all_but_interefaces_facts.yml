@@ -1,0 +1,10 @@
+- hosts: all
+  gather_facts: false
+  roles:
+  - role: operating_state
+    gather_states:
+    - all
+    - !interfaces
+  tasks:
+  - debug:
+      var: ansible_facts

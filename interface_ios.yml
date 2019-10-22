@@ -3,7 +3,7 @@
   roles:
   - role: operating_state
     gather_states:
-    - interfaces
+    - arp
   tasks:
   - debug:
       var: ansible_facts

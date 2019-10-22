@@ -1,5 +1,0 @@
----
-- src: https://github.com/network-automation/operating_state
-  version: master
-  scm: git
-  name: operating_state

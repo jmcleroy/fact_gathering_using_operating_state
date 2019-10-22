@@ -1,0 +1,4 @@
+# Only run the role when gather_states is defined, allow for registration of
+# plugins using the 'role' directive
+- include_tasks: execute.yml
+  when: gather_states is defined

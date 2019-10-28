@@ -1,0 +1,14 @@
+- hosts: ios102
+  gather_facts: false
+  vars:
+    ansible_python_interpreter: python
+
+  tasks:
+  - include_role:
+      name: operating_state
+    vars:
+      fact_key: oper_facts
+      gather_states:
+      - interfaces
+  - debug:
+      var: oper_facts.keys()|list

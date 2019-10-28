@@ -1,14 +1,18 @@
-- hosts: all
+- hosts: ios102
   gather_facts: false
   vars:
     ansible_python_interpreter: python
 
+  roles:
+  - operating_state
   tasks:
-  - include_role:
-      name: operating_state
-    vars:
-      fact_key: oper_facts
-      gather_states:
-      - interfaces
+  - name: "ios.interfaces: show interfaces"
+    cli_parse_transform:
+      engine: "pyats"
+      network_os: iosxe
+      commands:
+        - command: "show interfaces"
+          set_fact: True
+    register: output
   - debug:
-      var: oper_facts.keys()|list
+      var: output

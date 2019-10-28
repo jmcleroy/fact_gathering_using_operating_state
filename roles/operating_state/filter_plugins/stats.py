@@ -1,4 +1,5 @@
 
+f
 from ansible.errors import AnsibleFilterError
 from ansible.module_utils.network.common.utils import dict_merge
 from collections import Counter
@@ -22,14 +23,14 @@ def _stats(parsed, key, statsd, missing_key="unknown"):
             if isinstance(res, dict):
                 try:
                     if any(key in cval for ckey, cval in res.items()):
-                        counts = dict(Counter(cval.get(key, missing_key)
+                        counts = dict(Counter(str(cval.get(key, missing_key))
                                               for ckey, cval in res.items()))
                 except (AttributeError, TypeError, KeyError):
                     pass
             if isinstance(res, list):
                 try:
                     if any(key in cval for cval in res):
-                        counts = dict(Counter(cval.get(key, missing_key)
+                        counts = dict(Counter(str(cval.get(key, missing_key))
                                               for cval in res))
                 except (AttributeError, TypeError, KeyError):
                     pass
